@@ -18,14 +18,10 @@
   "parserOptions": {
     "sourceType": "module",
     "ecmaFeatures": {
-      "ecmaVersion": 6,
       "jsx": false,
       "modules": true,
       "experimentalObjectRestSpread": true
     }
   },
-  "extends": ["eslint:recommended" , "./.eslintfb.js"]
+  "extends": ["eslint:recommended" , "./node_modules/fbjs-scripts/eslint/.eslintrc.js"]
 }
-//"./node_modules/fbjs-scripts/eslint/.eslintrc.js"
-//    "flow-vars/define-flow-type": 1,
-//    "flow-vars/use-flow-type": 1
