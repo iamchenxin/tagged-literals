@@ -22,7 +22,7 @@ gulp.task('newproject', function() {
 // ........functions .......
 function stdGulpTrans(src, dst) {
   var sourceRoot = path.join(__dirname, src);
-  var srcPath = [src+'/**/*.js'];
+  var srcPath = [src+'/**/*.js', '!'+src+'/**/__tests__/**'];
   return gulp
     .src(srcPath)
     .pipe(sourcemaps.init())
