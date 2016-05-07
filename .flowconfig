@@ -1,5 +1,5 @@
 [ignore]
-.*/test/.*
+.*/__mocks__/.*
 .*/__tests__/.*
 .*/node_modules/binary-extensions/.*
 .*/node_modules/builtin-modules/.*

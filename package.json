@@ -1,6 +1,6 @@
 {
   "name": "tagged-literals",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "code collections for es6 tagged template literals ",
   "scripts": {
     "jest": "NODE_ENV=test jest $@",

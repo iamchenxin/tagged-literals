@@ -10,6 +10,7 @@ describe('test SQL tagged template', () => {
     password = '123456';
   });
 
+
   it('test empty string', () => {
     expect(SQL``)
     .toEqual({

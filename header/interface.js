@@ -2,7 +2,7 @@
  * @flow
  */
 
-declare module 'es6-literals' {
+declare module 'tagged-literals' {
   declare type InsertValue = {
     value: string
   };
