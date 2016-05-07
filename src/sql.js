@@ -1,10 +1,11 @@
 /*
  *@flow
  */
-type pgQueryConfig = {
-  text:string,
-  values:mixed[]
-};
+ type pgQueryConfig = {
+   text:string,
+   values:mixed[],
+   name?:string
+ };
 
 function SQL_LITERALS_ERROR(value) {
   this.value = value;

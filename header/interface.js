@@ -3,13 +3,15 @@
  */
 
 declare module 'tagged-literals' {
+  // -- sql.js ---
   declare type InsertValue = {
     value: string
   };
 
   declare type pgQueryConfig = {
     text:string,
-    values:mixed[]
+    values:mixed[],
+    name?:string
   };
 
   declare function inst(value:string):InsertValue;
