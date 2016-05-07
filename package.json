@@ -1,8 +1,7 @@
 {
   "name": "tagged-literals",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "code collections for es6 tagged template literals ",
-  "main": "index.js",
   "scripts": {
     "jest": "NODE_ENV=test jest $@",
     "test": "npm run jest",
@@ -26,6 +25,14 @@
     "url": "https://github.com/iamchenxin/tagged-literals/issues"
   },
   "homepage": "https://github.com/iamchenxin/tagged-literals#readme",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "index.js",
+    "header/",
+    "lib/"
+  ],
+  "main": "index.js",
   "devDependencies": {
     "babel-cli": "^6.8.0",
     "babel-core": "^6.8.0",

@@ -1,7 +1,7 @@
 /*
  *@flow
  */
-type sqlResult = {
+type pgQueryConfig = {
   text:string,
   values:mixed[]
 };
@@ -28,7 +28,7 @@ function inst(value:string):InsertValue {
 }
 
 //for postgres sql
-function SQL(strs:string[], ...args:mixed[]): sqlResult {
+function SQL(strs:string[], ...args:mixed[]):pgQueryConfig {
   const values =[];
   const text = strs.reduce((prev, curr, i) => {
     const arg = args[i-1];
