@@ -1,11 +1,11 @@
 /*
  *@flow
  */
- type pgQueryConfig = {
+export type pgQueryConfig = {
    text:string,
    values:mixed[],
    name?:string
- };
+};
 
 function SQL_LITERALS_ERROR(value) {
   this.value = value;
@@ -47,7 +47,7 @@ function SQL(strs:string[], ...args:mixed[]):pgQueryConfig {
   };
 }
 
-export {
-  inst,
-  SQL
+module.exports = {
+  inst:inst,
+  SQL:SQL
 };

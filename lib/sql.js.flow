@@ -49,4 +49,3 @@ module.exports = {
   inst: inst,
   SQL: SQL
 };
-//# sourceMappingURL=sql.js.map

@@ -2,8 +2,9 @@
 var gulp=require('gulp');
 var babel=require('gulp-babel');
 var sourcemaps=require('gulp-sourcemaps');
-//var rename = require('gulp-rename');
+var rename = require('gulp-rename');
 var path=require('path');
+const fbjsConfigure = require('babel-preset-fbjs/configure');
 //var gutil =require('gulp-util');
 
 
@@ -19,10 +20,32 @@ gulp.task('newproject', function() {
   return rmdir(['ts']);
 });
 
+gulp.task('flow', function() {
+  return flowType('src', 'lib');
+});
+
 // ........functions .......
+function flowType(src, dst) {
+  var srcPath = [src+'/**/*.js',
+    '!'+src+'/**/__tests__/**', '!'+src+'/**/__mocks__/**'];
+  return gulp
+    .src(srcPath)
+    .pipe(babel({
+      presets: [
+        fbjsConfigure({
+          autoImport: false,
+          target: 'flow',
+        }),
+      ],
+    }))
+    .pipe(rename({extname: '.js.flow'}))
+    .pipe(gulp.dest(dst));
+}
+
 function stdGulpTrans(src, dst) {
   var sourceRoot = path.join(__dirname, src);
-  var srcPath = [src+'/**/*.js', '!'+src+'/**/__tests__/**'];
+  var srcPath = [src+'/**/*.js',
+    '!'+src+'/**/__tests__/**', '!'+src+'/**/__mocks__/**'];
   return gulp
     .src(srcPath)
     .pipe(sourcemaps.init())
