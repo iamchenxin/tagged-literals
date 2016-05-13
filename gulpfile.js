@@ -30,14 +30,6 @@ function flowType(src, dst) {
     '!'+src+'/**/__tests__/**', '!'+src+'/**/__mocks__/**'];
   return gulp
     .src(srcPath)
-    .pipe(babel({
-      presets: [
-        fbjsConfigure({
-          autoImport: false,
-          target: 'flow',
-        }),
-      ],
-    }))
     .pipe(rename({extname: '.js.flow'}))
     .pipe(gulp.dest(dst));
 }
@@ -50,9 +42,13 @@ function stdGulpTrans(src, dst) {
     .src(srcPath)
     .pipe(sourcemaps.init())
     .pipe(babel({
-      'presets': ['es2015', 'stage-0'],
-      'plugins': ['transform-flow-strip-types']
-    }) )
+      presets: [
+        fbjsConfigure({
+          autoImport: false,
+          target: 'js',
+        }),
+      ],
+    }))
     .pipe(sourcemaps.write('.', {
       includeContent: true, sourceRoot: sourceRoot, debug:true
     }))
