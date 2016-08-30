@@ -7,5 +7,5 @@ import type {pgQueryConfig} from './sql';
 export type {pgQueryConfig};
 module.exports = {
   SQL:sql.SQL,
-  inst:sql.inst
+  R:sql.R
 };

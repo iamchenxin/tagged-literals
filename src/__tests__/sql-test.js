@@ -1,4 +1,4 @@
-const {SQL, inst} = require('../sql.js');
+const {SQL, R} = require('../sql.js');
 console.log(SQL);
 
 describe('test SQL tagged template', () => {
@@ -27,13 +27,13 @@ describe('test SQL tagged template', () => {
     });
   });
 
-  it('test directly insert value [inst]', () => {
+  it('test directly insert value [R]', () => {
     let column = 'name';
     let table = 'admin';
-    expect(SQL`select ${inst(column)} from ${inst(table)}
+    expect(SQL`select ${R(column)} from ${R(table)}
 where id=${userId} and password=${password}`)
     .toEqual({
-      text: `select "name" from "admin"
+      text: `select name from admin
 where id=$1 and password=$2`,
       values: [userId, password]
     });

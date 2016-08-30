@@ -18,12 +18,11 @@ function InsertValue(value) {
   this.value = value;
 }
 
-function inst(value:string):InsertValue {
+// ToDo: should check if value is a legal postgres literal
+// R: raw , replace, the words in string, not push to pg.values
+function R(value:string):InsertValue {
   if (typeof value !== 'string') {
     throw new SQL_LITERALS_ERROR(value);
-  }
-  if (value[0]!=='"') {
-    value = `"${value}"`; // auto double quoted,to void
   }
   return new InsertValue(value);
 }
@@ -33,10 +32,10 @@ function SQL(strs:string[], ...args:mixed[]):pgQueryConfig {
   const values =[];
   const text = strs.reduce((prev, curr, i) => {
     const arg = args[i-1];
-    if (arg instanceof InsertValue) {
+    if (arg instanceof InsertValue) { // if R, just replace words in string
       return prev+arg.value+curr;
     } else {
-      values.push(arg);
+      values.push(arg); // push to pg {values}
       return prev+'$'+values.length+curr;
     }
   });
@@ -48,6 +47,6 @@ function SQL(strs:string[], ...args:mixed[]):pgQueryConfig {
 }
 
 module.exports = {
-  inst:inst,
+  R:R,
   SQL:SQL
 };
